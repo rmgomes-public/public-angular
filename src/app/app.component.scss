@@ -1,0 +1,24 @@
+.noNetwork {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    background: linear-gradient(35deg, #5d3359db, #000000);
+    pointer-events: none;
+    position: absolute;
+    z-index: 50000 !important;
+    text-align: center;
+    width: 90%;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 30px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}

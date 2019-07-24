@@ -1,0 +1,278 @@
+<ion-header translucent="true"
+  [ngClass]="{'ionHeaderLogin': SHOW_SIGNIN_FORM, 'ionHeaderRegister': SHOW_SIGNUP_FORM, 'ionHeaderRecover': SHOW_PASSWORD_RECOVERY}">
+  <ion-grid class="logoXL">
+    <ion-row>
+      <ion-col text-center class="logoCol">
+        <img src="./assets/dernier-logo.svg" class="logo" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="logoXS">
+    <ion-row>
+      <ion-col text-center>
+        <img src="./assets/dernier-logo-plat.svg" class="logo" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+
+
+<ion-content
+  [ngClass]="{'ionContentRegister': SHOW_SIGNUP_FORM, 'ionContentLogin': SHOW_SIGNIN_FORM, 'ionContentRecover': SHOW_PASSWORD_RECOVERY}">
+
+  <ion-grid class="authSigninGrid" *ngIf="SHOW_SIGNIN_FORM">
+    <form class="signinForm" id="signinForm" [formGroup]="signinForm" #signinform (ngSubmit)="doWebLogin()">
+      <ion-row text-center>
+        <ion-col class="formHeader">
+          <h1>
+            Connect to the app
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row text-end class="inputRow">
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="fixed">
+              <ion-icon name="at"></ion-icon>
+            </ion-label>
+            <ion-input type="text" formControlName="signin_email"
+              placeholder="{{ 'AUTHPAGE.EMAIL_ADDRESS' | translate }}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row class="inputRow">
+        <ion-col text-end size="10">
+          <ion-item lines="none">
+            <ion-label position="fixed">
+              <ion-icon name="keypad"></ion-icon>
+            </ion-label>
+            <ion-input id="pwd1" type="password" formControlName="signin_password"
+              placeholder="{{ 'AUTHPAGE.PASSWORD' | translate }}"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="2" style="margin-top:5px" text-center (click)="showPwd('pwd1')">
+          <ion-icon name="eye"></ion-icon>
+        </ion-col>
+      </ion-row>
+
+      <!-- FORGOT PASSWORD -->
+      <ion-row *ngIf="showFooter">
+        <ion-col text-end (click)="SHOW_SIGNIN_FORM = false; SHOW_SIGNUP_FORM = false; SHOW_PASSWORD_RECOVERY = true;">
+          <ion-text color="light">
+            <a style="color:#fca326">
+              <img class="forgot-password" src="../../../assets/custom-icons/md-forgot-password.svg" alt="">
+            </a>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+
+  <ion-grid class="authSignupGrid" *ngIf="SHOW_SIGNUP_FORM">
+
+
+
+    <form class="signupForm" [formGroup]="signupForm" (ngSubmit)="createAccount()">
+      <ion-row text-center>
+        <ion-col class="formHeader">
+          {{ 'AUTHPAGE.SIGNUP' | translate }}
+        </ion-col>
+      </ion-row>
+      <ion-row class="inputRow">
+        <ion-col text-end>
+          <ion-item class="signupItems" lines="none">
+            <ion-label position="fixed">
+              <ion-icon name="person"></ion-icon>
+            </ion-label>
+            <ion-input type="text" formControlName="signup_name" placeholder="{{ 'AUTHPAGE.NAME' | translate }}">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row class="inputRow">
+        <ion-col text-end>
+          <ion-item class="signupItems" lines="none">
+            <ion-label position="fixed">
+              <ion-icon name="mail"></ion-icon>
+            </ion-label>
+            <ion-input type="text" formControlName="signup_email"
+              placeholder="{{ 'AUTHPAGE.EMAIL_ADDRESS' | translate }}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row class="inputRow">
+        <ion-col text-end>
+          <ion-item class="signupItems" lines="none">
+            <ion-label position="fixed">
+              <ion-icon name="key"></ion-icon>
+            </ion-label>
+            <ion-input type="password" formControlName="signup_password"
+              placeholder="{{ 'AUTHPAGE.PASSWORD' | translate }}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="inputRow">
+        <ion-col text-end>
+          <ion-item class="signupItems" lines="none">
+            <ion-label position="fixed">
+              <ion-icon name="keypad"></ion-icon>
+            </ion-label>
+            <ion-input type="password" formControlName="signup_password_confirm"
+              placeholder="{{ 'AUTHPAGE.PASSWORD_CONFIRM' | translate }}"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="">
+        <ion-col text-end>
+          <ion-item class="signupItems" lines="none">
+            <ion-label position="fixed">
+              <ion-checkbox color="primary" formControlName="signup_conditions_accept"></ion-checkbox>
+            </ion-label>
+            {{ 'AUTHPAGE.ACCEPT_CONDITIONS' | translate }}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </form>
+
+
+
+  </ion-grid>
+
+  <ion-grid class="authRecoveryGrid" *ngIf="SHOW_PASSWORD_RECOVERY">
+
+    <ion-row>
+      <ion-col color="dark">
+        <form [formGroup]="recoveryForm" (ngSubmit)="recoveryPassword()">
+          <ion-row *ngIf="SHOW_PASSWORD_RECOVERY" class="formHeader">
+            <ion-col text-center>
+              {{ 'AUTHPAGE.PWD_RECOVERY' | translate }}
+            </ion-col>
+          </ion-row>
+          <ion-row class="inputRow">
+            <ion-col text-end>
+              <ion-item class="signupItems" lines="none">
+                <ion-label position="fixed">
+                  <ion-icon name="mail"></ion-icon>
+                </ion-label>
+                <ion-input type="text" formControlName="recovery_email"
+                  placeholder="{{ 'AUTHPAGE.EMAIL_ADDRESS' | translate }}"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+
+
+
+
+<!-- BUTTONS -->
+<ion-footer translucent="true" *ngIf="showFooter">
+  <ion-row>
+
+    <!-- SIGNIN BUTTON -->
+    <ion-col text-center *ngIf="SHOW_SIGNIN_FORM == true" (click)="doWebLogin()">
+      <ion-icon type="Btnsubmit" name="arrow-forward" [ngClass]="{'btnRound' : signinForm.valid, 'btnRound-inactive': signinForm.invalid}"></ion-icon>
+      <div style="clear:both"></div>
+
+      <ion-text color="light">
+        Se connecter
+      </ion-text>
+    </ion-col>
+
+
+    
+    <ion-col text-center *ngIf="SHOW_SIGNIN_FORM == true"
+      (click)="SHOW_SIGNIN_FORM = false; SHOW_SIGNUP_FORM = true; SHOW_PASSWORD_RECOVERY = false;">
+
+      <ion-icon name="add" class="btnRound"></ion-icon>
+      <div style="clear:both"></div>
+      <ion-text color="light">
+        {{ 'AUTHPAGE.SIGNUP' | translate }}
+      </ion-text>
+    </ion-col>
+
+
+
+    <!-- FACEBOOK BUTTON -->
+    <ion-col text-center *ngIf="SHOW_SIGNIN_FORM == true" (click)="doFbLogin()">
+      <img src="../../../assets/facebook.svg" class="btnRound" style="padding:9px;" />
+      <div style="clear:both"></div>
+      <ion-text color="light">
+        Connexion Facebook
+      </ion-text>
+    </ion-col>
+
+    <!-- SIGNUP BUTTON -->
+    <ion-col text-center *ngIf="SHOW_SIGNUP_FORM == true" (click)="createAccount()">
+      <ion-icon type="submit" name="arrow-forward" class="btnRound"></ion-icon>
+      <div style="clear:both"></div>
+      <ion-text color="light">
+        Créer compte
+      </ion-text>
+    </ion-col>
+
+    <!-- GO BACK FROM SIGNUP -->
+    <ion-col text-center *ngIf="SHOW_SIGNUP_FORM == true"
+      (click)="SHOW_SIGNIN_FORM = true; SHOW_SIGNUP_FORM = false; SHOW_PASSWORD_RECOVERY = false;">
+      <ion-icon type="submit" name="arrow-back" class="btnRound"></ion-icon>
+      <div style="clear:both"></div>
+      <ion-text color="light">
+        Retour
+      </ion-text>
+    </ion-col>
+
+    <!-- RECOVERY BUTTON -->
+    <ion-col text-center *ngIf="SHOW_PASSWORD_RECOVERY == true" (click)="recoveryPassword()">
+      <ion-icon type="submit" name="arrow-forward" class="btnRound"></ion-icon>
+      <div style="clear:both"></div>
+      <ion-text color="light">
+        Récupérer mot de passe
+      </ion-text>
+    </ion-col>
+
+    <!-- GO BACK FROM RECOVERY -->
+    <ion-col text-center *ngIf="SHOW_PASSWORD_RECOVERY == true"
+      (click)="SHOW_SIGNIN_FORM = true; SHOW_SIGNUP_FORM = false; SHOW_PASSWORD_RECOVERY = false;">
+      <ion-icon type="submit" name="arrow-back" class="btnRound"></ion-icon>
+      <div style="clear:both"></div>
+      <ion-text color="light">
+        Retour
+      </ion-text>
+    </ion-col>
+  </ion-row>
+
+
+
+
+
+  <!-- FORGOT PASSWORD -->
+  <ion-row *ngIf="SHOW_SIGNIN_FORM">
+    <!-- <ion-col text-center
+      (click)="SHOW_SIGNIN_FORM = false; SHOW_SIGNUP_FORM = false; SHOW_PASSWORD_RECOVERY = true;">
+      <ion-text color="light">
+        <a style="color:#fca326">{{ 'AUTHPAGE.FORGOT_PWD' | translate }}</a>
+      </ion-text>
+    </ion-col> -->
+    <ion-col text-center>
+      <language-picker *ngIf="SHOW_SIGNIN_FORM" id="languagePicker"></language-picker>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>
+
+
+<app-loader></app-loader>

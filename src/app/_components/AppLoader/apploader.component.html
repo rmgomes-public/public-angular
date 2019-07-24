@@ -1,0 +1,12 @@
+<div id="loader">
+    <img src="./assets/loader.svg" />
+    <span style="display:block" *ngIf="text">
+        {{text}}
+    </span>
+
+    <span *ngIf="showPercentage">
+        {{percentage}} %
+    </span>
+
+</div>
+<div id="dimmed"></div>

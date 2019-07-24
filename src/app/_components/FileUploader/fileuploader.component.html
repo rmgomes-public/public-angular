@@ -1,0 +1,6 @@
+<form [formGroup]="fileInputForm" novalidate #inputFileForm>
+    <input id="file-input" type="file" name="file-input" style="display:none;" (change)="onFileChange($event)" />
+    <label for="file-input">
+        <ion-icon name="add" class="utilities"></ion-icon>
+    </label>
+</form>

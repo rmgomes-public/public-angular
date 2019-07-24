@@ -1,0 +1,291 @@
+.logoXS {
+    display: block;
+}
+
+
+.logoXL {
+    display: none;
+    width: 100%;
+}
+
+
+.forgot-password {
+    width: 100%;
+    background: rgba(29, 3, 12, 0.71);
+    border-radius: 30px;
+    padding: 5px;
+    width: 40px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #ad6aa857, #140a1573);
+    box-shadow: 1px 1px 6px #ad6aa870;
+}
+
+
+.authSigninGrid {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    justify-content: center;
+
+    ion-row {
+        width: 100% !important;
+    }
+}
+
+.authSignupGrid {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+
+    ion-row {
+        width: 100% !important;
+    }
+}
+
+.authRecoveryGrid {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    ion-row {
+        width: 100% !important;
+    }
+}
+
+
+// #myVideo {
+//     position: fixed;
+//     right: 0;
+//     bottom: 0;
+//     min-width: 100%;
+//     min-height: 100%;
+//     width: auto;
+//     height: auto;
+//     z-index: -100;
+//     background-size: cover;
+//     opacity: 0.03
+// }
+
+
+.ionContentRegister {
+    display: flex;
+    padding: 5px 20px;
+}
+
+.inputRow {
+    width: 100%;
+    background: rgba(29, 3, 12, 0.71);
+    border-radius: 20px;
+    background: linear-gradient(45deg, #ad6aa857, #140a1573);
+    box-shadow: 1px 1px 6px #ad6aa870;
+
+    ion-col {
+        display: flex;
+        align-items: center;
+        padding: 0 !important;
+        margin: 0 !important;
+        justify-content: space-between;
+    }
+    
+    ion-icon{
+        width:28px;
+    }
+}
+
+
+.signinForm,
+.signupForm {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+
+.ionHeaderLogin {
+    .logoXL {
+        display: block;
+    }
+
+    .logoXS {
+        display: none;
+    }
+}
+
+.logoCol {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+.ionHeaderRegister {
+    .logoXL {
+        display: none;
+    }
+
+    .logoXS {
+        display: block;
+    }
+}
+
+
+
+.ionHeaderRecover {
+    .logoXL {
+        display: block;
+    }
+
+    .logoXS {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+// Small devices
+@media screen and (max-height: 568px){
+    .ionHeaderLogin {
+        .logoXL {
+            display: none;
+        }
+
+        .logoXS {
+            display: block;
+        }
+    }
+
+
+}
+
+// 
+// Small devices
+@media screen and (min-height: 569px){
+    .ionHeaderLogin {
+        // .logoXL {
+        //     display: none;
+        // }
+
+        // .logoXS {
+        //     display: block;
+        // }
+    }
+
+}
+
+
+// Iphone 5 / 5 SE
+@media screen and (min-height: 568px) and (min-width: 320px) {
+    .logoXS {
+        display: none;
+    }
+
+    .logoXL {
+        display: block;
+    }
+
+}
+
+
+
+@media screen and (min-height: 640px) {
+    .logoXS {
+        display: none;
+    }
+
+    .logoXL {
+        display: block;
+    }
+
+}
+
+
+@media screen and (min-height: 667px) {
+    .logoXS {
+        display: none;
+    }
+
+    .logoXL {
+        display: block;
+    }
+
+}
+
+
+@media screen and (min-height: 731px) {
+    .logoXS {
+        display: none;
+    }
+
+    .logoXL {
+        display: block;
+    }
+}
+
+
+@media screen and (min-height: 736px) {
+    .logoXS {
+        display: none;
+    }
+
+    .logoXL {
+        display: block;
+    }
+
+}
+
+
+@media screen and (min-height: 812px) {
+    .logoXS {
+        display: none;
+    }
+
+    .logoXL {
+        display: block;
+    }
+
+
+    .ionHeaderRegister {
+        .logoXS {
+            display: none;
+        }
+
+        .logoXL {
+            display: block;
+        }
+    }
+}
+
+
+@media screen and (min-height: 823px) {
+    .logoXS {
+        display: none;
+    }
+
+    .logoXL {
+        display: block;
+    }
+
+    .ionHeaderRegister {
+        .logoXL {
+            display: block;
+        }
+
+        .logoXS {
+            display: none;
+        }
+    }
+
+}
+
+
+@media screen and (max-height: 768px) and (min-width: 1200px) {}

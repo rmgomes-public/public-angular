@@ -1,0 +1,103 @@
+<ng-container *ngIf="step == 'chooseGender' ">
+    <ion-content>
+        <ion-grid class="starterGrids">
+            <ion-row text-center class="rows">
+                <ion-col (click)="selectOwnGender('Male')">
+                    <img src="../../../assets/male-transparent.svg" alt="" width="100" class="genderIcons"
+                        id="selectGenderMale">
+                    <p>Je suis un homme</p>
+                </ion-col>
+            </ion-row>
+            <ion-row text-center class="rows">
+                <ion-col (click)="selectOwnGender('Female')">
+                    <img src="../../../assets/female-transparent.svg" alt="" width="100" class="genderIcons"
+                        id="selectGenderFemale">
+                    <p>Je suis une femme</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+</ng-container>
+
+
+<ng-container *ngIf="step == 'chooseAge' ">
+    <ion-content>
+        <ion-grid class="starterGrids">
+            <ion-row text-center class="rows">
+                <ion-col>
+                    <ion-item text-center style="text-align: center">
+                        <p style="width:100%;text-align:center;">J'ai {{age}} ans</p>
+                    </ion-item>
+                    <ion-item>
+                        <ion-range dualKnobs="false" snaps="true" min="18" max="99" step="1" color="secondary"
+                            [(ngModel)]="age">
+                            <ion-label slot="start"><span>18</span></ion-label>
+                            <ion-label slot="end"><span>99</span></ion-label>
+                        </ion-range>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+    <ion-footer color="light">
+        <ion-button class="app-buttons" (click)="step = 'chooseGender' ">
+            Précèdent
+        </ion-button>
+        <ion-button class="app-buttons" (click)="selectAge()">
+            Suivant
+        </ion-button>
+    </ion-footer>
+</ng-container>
+
+<ng-container *ngIf="step == 'chooseSexualOrientation'">
+    <ion-content>
+
+        <ion-grid class="starterGrids">
+            <!-- <ion-row>
+                <ion-col text-center>
+                    <p class="formHeader">What are you looking for?</p>
+                </ion-col>
+            </ion-row> -->
+            <ion-row text-center class="rows">
+                <ion-col (click)="selectLookingFor('Male')">
+                    <img src="../../../assets/male-transparent.svg" alt="" width="100" class="genderIcons">
+                    <p>Je recherche des hommes</p>
+                </ion-col>
+            </ion-row>
+            <ion-row text-center class="rows">
+                <ion-col (click)="selectLookingFor('Female')">
+                    <img src="../../../assets/female-transparent.svg" alt="" width="100" class="genderIcons">
+                    <p>Je recherche des femmes</p>
+                </ion-col>
+            </ion-row>
+            <ion-row text-center class="rows">
+                <ion-col (click)="selectLookingFor('Bissexual')">
+                    <img src="../../../assets/bissexual-transparent.svg" alt="" width="180" class="genderIcons">
+                    <p>Peu importe</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+    <ion-footer style="z-index:102">
+        <ion-button class="app-buttons" (click)="step = 'chooseAge' ">
+            Précèdent
+        </ion-button>
+    </ion-footer>
+</ng-container>
+
+
+
+
+<ng-container *ngIf="step == 'chooseLocation'">
+    <ion-content>
+        <gps-position (onAddress)="addressFound($event)" (onWaiting)="onWaiting($event)"></gps-position>
+    </ion-content>
+    <ion-footer color="light">
+        <ion-button class="app-buttons" (click)="step = 'chooseSexualOrientation' ">
+            Précèdent
+        </ion-button>
+        <ion-button class="app-buttons" (click)="chooseLocation()">
+            Suivant
+        </ion-button>
+    </ion-footer>
+</ng-container>

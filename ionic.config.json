@@ -1,0 +1,7 @@
+{
+  "name": "com.public-angular.android",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

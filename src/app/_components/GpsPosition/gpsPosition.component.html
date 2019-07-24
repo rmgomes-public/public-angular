@@ -1,0 +1,81 @@
+<ion-grid *ngIf="gpsIsDisabled" class="ActivateDialogGrid">
+    <ion-row text-center class="rows">
+        <ion-col>
+            <p style="text-align:center;">We need GPS permissions activated on your device in order to get your locality
+            </p>
+        </ion-col>
+    </ion-row>
+    <ion-row text-center>
+        <ion-col>
+            <ion-button class="btn" (click)="goToGpsParameters()" class="app-buttons">Enable GPS</ion-button>
+            <ion-button class="btn" (click)="setPositionAndGoNext()" *ngIf="recheck" class="app-buttons">Check again</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <span>
+                Or
+            </span>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-button class="btn" (click)="setLocationManually()" class="app-buttons">Locate manually</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+
+
+
+<ng-container *ngIf="gpsIsEnabled">
+        <ion-grid class="gridMap">
+                <ion-row text-center>
+                    <ion-col>
+                        <p>
+                            Ou habitez-vous ?
+                        </p>
+                    </ion-col>
+                </ion-row>
+        
+                <ion-row text-center>
+                    <ion-col>
+                        <span *ngIf="addressFound">
+                            {{userAddress.locality}}
+                        </span>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+</ng-container>
+
+<ng-container *ngIf="showMap" class="ActivateDialogGrid">
+
+
+    <ion-grid class="gridMap">
+        <ion-row text-center>
+            <ion-col>
+                <p>
+                    Ou habitez-vous ?
+                </p>
+                <input id="pac-input" class="controls" [(ngModel)]="searchInput"
+                    (ngModelChange)="addressFound = false;disableNextButton()" name="searchInput" type="text"
+                    placeholder="Rechercher une adresse..." (click)="searchInput = ''" class="rows searchInput">
+            </ion-col>
+        </ion-row>
+
+        <ion-row text-center>
+            <ion-col>
+                <span *ngIf="addressFound">
+                    {{userAddress.locality}}
+                </span>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ng-container>
